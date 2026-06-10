@@ -198,43 +198,126 @@
     </div>
   </div>
 
-  <!-- 2: Pillar 1 - 集团化 -->
+  <!-- 2-1: Pillar 1 - 现状与问题 -->
   <div class="slide">
-    <div class="slide-title">一、集团化整合进展</div>
-    <div class="slide-subtitle">推进核心系统从"各司独立部署"向"集团统一底座"转型，降低重复建设成本。</div>
+    <div class="slide-title">一、集团化整合 — 从现状到问题</div>
+    <div class="slide-subtitle">先看清我们站在哪里：四套独立系统、四套流程标准、四份数据口径，集团化管理的前提是差异显性化。</div>
+    <div class="card-grid cols-3" style="margin-bottom:16px;">
+      <div class="card" style="text-align:center;border-top:3px solid #ef4444;">
+        <h3 style="font-size:14px;">马消（马上消费）</h3>
+        <p style="margin-top:6px;">蓝凌 OA + 自建 HR 系统<br>流程节点 30+，审批链路深<br><strong style="color:#ef4444;">流程最重</strong></p>
+      </div>
+      <div class="card" style="text-align:center;border-top:3px solid #f59e0b;">
+        <h3 style="font-size:14px;">信盟</h3>
+        <p style="margin-top:6px;">飞书审批为主 + 轻量 HR<br>流程节点 12-15 个<br><strong style="color:#f59e0b;">最灵活</strong></p>
+      </div>
+      <div class="card" style="text-align:center;border-top:3px solid #10b981;">
+        <h3 style="font-size:14px;">中科金</h3>
+        <p style="margin-top:6px;">本地化 OA + 独立报销系统<br>海外多语言需求突出<br><strong style="color:#10b981;">国际化先行</strong></p>
+      </div>
+    </div>
+    <div class="card-grid cols-3" style="margin-bottom:16px;">
+      <div class="card" style="text-align:center;border-top:3px solid #8b5cf6;">
+        <h3 style="font-size:14px;">枭龙云</h3>
+        <p style="margin-top:6px;">轻量 SaaS 方案<br>流程节点少，审批快<br><strong style="color:#8b5cf6;">最轻</strong></p>
+      </div>
+      <div class="card" style="text-align:center;border-top:3px solid var(--primary);border-style:dashed;">
+        <h3 style="font-size:14px;">目标态：统一底座</h3>
+        <p style="margin-top:6px;">多租户架构 + 配置化流程<br>一套系统，四主体独立运行<br>数据统一入仓</p>
+      </div>
+      <div class="card" style="text-align:center;border-top:3px solid var(--primary);">
+        <h3 style="font-size:14px;">共性底座</h3>
+        <p style="margin-top:6px;">SSO/IAM/EDDS 已打通<br>组织架构与账号体统一<br><strong>底层能力已就位</strong></p>
+      </div>
+    </div>
+    <div class="card" style="max-width:1040px;width:100%;">
+      <div class="card-label blue" style="margin-bottom:10px;">从现状引出三大问题</div>
+      <div class="card-grid cols-3" style="gap:12px;">
+        <div>
+          <h3 style="color:#ef4444;font-size:15px;">问题一：重复建设成本高</h3>
+          <p>四套独立系统并行，每套都有采购、入职、审批模块，重复投入开发与运维资源，难以统一升级。</p>
+        </div>
+        <div>
+          <h3 style="color:#f59e0b;font-size:15px;">问题二：流程标准不统一</h3>
+          <p>同是采购审批，马消 30+ 节点、信盟 12 个节点，集团层面无法横向对比，管理决策缺乏统一口径。</p>
+        </div>
+        <div>
+          <h3 style="color:#8b5cf6;font-size:15px;">问题三：数据孤岛</h3>
+          <p>各司数据分散，物资调拨、预算管控、人力分析缺乏全局视图，管理层看不到"一张图"。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2-2: Pillar 1 - 进展与收益 -->
+  <div class="slide">
+    <div class="slide-title">一、集团化整合 — 行动进展与收益</div>
+    <div class="slide-subtitle">针对三大问题逐项推进，已完成底层打通与差异梳理，进入系统切换阶段。</div>
     <div class="card-grid cols-2">
       <div class="card">
-        <div class="card-label blue">系统整合成果</div>
+        <div class="card-label blue">针对问题一：消除重复建设</div>
         <ul>
-          <li><strong>集团门户</strong>：多租户改造完成，SSO/IAM/EDDS 对接，实现组织架构与账号体系统一。</li>
+          <li><strong>集团门户</strong>：多租户改造完成，一套系统支撑四主体独立展示与权限管控。</li>
           <li><strong>统一待办中心</strong>：核心功能开发测试完成，eoa 待办已接入，具备上线条件。</li>
           <li><strong>智能流程平台</strong>：迁移工具满足度 90%+（表单 94%、流程 90%），流程图自动布局可用。</li>
-          <li><strong>集团官网</strong>：多语言版本突破，中科金马来语/泰语/印尼语/西语及英语/日语版本上线。</li>
-          <li><strong>采购/得力商城</strong>：四主体接入完成；采购流程节点配置化第一阶段上线。</li>
+          <li><strong>采购/得力商城</strong>：四主体接入完成，采购流程节点实现配置化第一阶段上线。</li>
         </ul>
+        <div class="highlight-box">
+          <p><strong>收益：</strong>从 4 套系统缩减为 1 套多租户架构，运维成本下降，后续新增主体可快速接入。</p>
+        </div>
       </div>
       <div class="card">
-        <div class="card-label blue">核心系统切换进度</div>
-        <div style="margin-top:8px;">
-          <div style="margin-bottom:12px;">
-            <div style="display:flex;justify-content:space-between;"><span style="font-size:13px;font-weight:600;">集团化 Offer 管理系统</span><span style="font-size:12px;color:var(--text-dim);">50%</span></div>
-            <div class="progress-bar"><div class="progress-fill" style="width:50%"></div></div>
-          </div>
-          <div style="margin-bottom:12px;">
-            <div style="display:flex;justify-content:space-between;"><span style="font-size:13px;font-weight:600;">集团化 AI 入职</span><span style="font-size:12px;color:var(--text-dim);">20%</span></div>
-            <div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div>
-          </div>
-          <div style="margin-bottom:12px;">
-            <div style="display:flex;justify-content:space-between;"><span style="font-size:13px;font-weight:600;">中科金门户升级</span><span style="font-size:12px;color:var(--text-dim);">Q2 上线</span></div>
-            <div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div>
-          </div>
-          <div style="margin-bottom:12px;">
-            <div style="display:flex;justify-content:space-between;"><span style="font-size:13px;font-weight:600;">中科金智能报销</span><span style="font-size:12px;color:var(--text-dim);">70%</span></div>
-            <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
-          </div>
-        </div>
+        <div class="card-label blue">针对问题二 & 三：流程统一 + 数据拉通</div>
+        <ul>
+          <li><strong>SSO/IAM/EDDS 全面对接</strong>：实现组织架构与账号体系统一，跨主体权限管控可追溯。</li>
+          <li><strong>四司差异清单完成对齐</strong>：物资、采购、Offer、AI 入职等核心系统差异点逐一对齐确认。</li>
+          <li><strong>中科金门户升级</strong>：Q2 上线，多语言版本突破（马来语/泰语/印尼语/西语/英/日）。</li>
+          <li><strong>官网双活故障演练</strong>：推进中，满足监管多活要求。</li>
+        </ul>
         <div class="highlight-box">
-          <p><strong>下一阶段：</strong>底层对接与差异梳理已完成，进入系统切换与业务迁移阶段。Offer 系统计划 6 月 30 日完成交付。</p>
+          <p><strong>当前进度总览</strong>：底层对接 100% ✅ → 差异梳理 90%+ ✅ → 系统切换进入攻坚期</p>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="max-width:1040px;width:100%;margin-top:14px;">
+      <div class="card-label blue" style="margin-bottom:10px;">核心系统切换进度</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
+        <div>
+          <div style="display:flex;justify-content:space-between;"><span style="font-size:13px;font-weight:600;">集团化 Offer 管理系统</span><span style="font-size:12px;color:var(--text-dim);">50%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:50%"></div></div>
+          <p style="font-size:11px;color:var(--text-light);margin-top:2px;">四司差异确认中，6/30 目标交付</p>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;"><span style="font-size:13px;font-weight:600;">集团化 AI 入职</span><span style="font-size:12px;color:var(--text-dim);">20%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div>
+          <p style="font-size:11px;color:var(--text-light);margin-top:2px;">OCR+防PS+大模型预审能力设计中</p>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;"><span style="font-size:13px;font-weight:600;">中科金智能报销</span><span style="font-size:12px;color:var(--text-dim);">70%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
+          <p style="font-size:11px;color:var(--text-light);margin-top:2px;">本地化适配与审批流切换中</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2-3: Pillar 1 - 反思 -->
+  <div class="slide">
+    <div class="slide-title">一、集团化整合 — 复盘与反思</div>
+    <div class="slide-subtitle">从推进过程中的偏差，重新审视我们对业务的认知和做事方式。</div>
+    <div class="card-grid cols-2">
+      <div class="card">
+        <h3>对业务的反思：集团化不是"统一"，是"统一底座 + 差异共存"</h3>
+        <p style="margin-top:8px;">初期我们倾向于"一刀切"统一，但实际推进中发现：马消的深审批链是合规刚需，信盟的轻量流程是效率优势，中科金的多语言是国际化必选项。真正的集团化不是消灭差异，而是用架构能力承载差异。</p>
+        <div class="highlight-box">
+          <p><strong>认知升级：</strong>从"替代"思维转向"平台化"思维——提供统一底座，允许各主体在规则范围内自定义流程，用配置化代替定制化。</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>对方法的反思：差异确认必须在方案锁定之前</h3>
+        <p style="margin-top:8px;">Offer 系统和 AI 入职进度滞后，核心原因是差异梳理与开发并行推进，导致反复返工。我们学到：四司差异不确认完，绝不能进入开发。</p>
+        <div class="highlight-box">
+          <p><strong>方法论调整：</strong>严格执行"差异确认 → 方案锁定 → 开发 → 切换"四步流程，每步设里程碑评审，避免边做边改。后续所有集团化项目按此流程执行。</p>
         </div>
       </div>
     </div>
