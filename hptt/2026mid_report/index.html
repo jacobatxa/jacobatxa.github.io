@@ -6,184 +6,176 @@
 <title>26H1 工作汇报与下半年规划</title>
 <style>
   :root {
-    --bg: #f0f4f8;
-    --card: #ffffff;
-    --primary: #1d4ed8;
-    --primary-light: #dbeafe;
-    --primary-dark: #1e3a8a;
-    --text: #0f172a;
-    --text-dim: #475569;
-    --text-light: #94a3b8;
-    --border: #e2e8f0;
-    --shadow: 0 4px 16px rgba(0,0,0,0.06);
-    --shadow-hover: 0 8px 24px rgba(0,0,0,0.10);
-    --red: #ef4444;
-    --amber: #f59e0b;
-    --green: #10b981;
-    --purple: #8b5cf6;
-    --teal: #14b8a6;
+    --bg: #f0f4f8; --card: #ffffff; --primary: #1d4ed8; --primary-light: #dbeafe; --primary-dark: #1e3a8a;
+    --text: #0f172a; --text-dim: #475569; --text-light: #94a3b8; --border: #e2e8f0;
+    --shadow: 0 4px 16px rgba(0,0,0,0.06); --shadow-hover: 0 8px 24px rgba(0,0,0,0.10);
+    --red: #ef4444; --amber: #f59e0b; --green: #10b981; --purple: #8b5cf6; --teal: #14b8a6;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: -apple-system, "SF Pro Text", "Helvetica Neue", "PingFang SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
-    background: var(--bg); color: var(--text);
-    overflow: hidden; height: 100vh; width: 100vw; user-select: none;
-  }
+  body { font-family: -apple-system, "SF Pro Text", "Helvetica Neue", "PingFang SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg); color: var(--text); overflow: hidden; height: 100vh; width: 100vw; user-select: none; }
   .slides-wrapper { width: 100vw; height: 100vh; position: relative; overflow: hidden; }
-  .slide {
-    position: absolute; inset: 0;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    padding: 48px 64px;
-    opacity: 0; transform: translateX(50px);
-    transition: opacity 0.4s ease, transform 0.4s ease; pointer-events: none;
-  }
+  .slide { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    padding: 44px 56px; opacity: 0; transform: translateX(50px); transition: opacity 0.4s ease, transform 0.4s ease; pointer-events: none; }
   .slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
   .slide.exit { opacity: 0; transform: translateX(-50px); }
-  .nav-bar {
-    position: fixed; bottom: 0; left: 0; right: 0; height: 50px;
-    background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-    border-top: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 28px; z-index: 100;
-  }
-  .nav-title { font-size: 13px; color: var(--text-dim); font-weight: 500; }
-  .nav-section { font-size: 11px; color: var(--primary); font-weight: 600; background: var(--primary-light); padding: 2px 10px; border-radius: 99px; }
-  .nav-center { display: flex; align-items: center; gap: 16px; }
-  .nav-dots { display: flex; gap: 7px; }
-  .nav-dot {
-    width: 8px; height: 8px; border-radius: 50%; background: var(--border);
-    cursor: pointer; transition: all 0.2s;
-  }
+  .nav-bar { position: fixed; bottom: 0; left: 0; right: 0; height: 48px; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+    border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; z-index: 100; }
+  .nav-title { font-size: 12px; color: var(--text-dim); font-weight: 500; }
+  .nav-section { font-size: 10px; color: var(--primary); font-weight: 600; background: var(--primary-light); padding: 2px 8px; border-radius: 99px; }
+  .nav-center { display: flex; align-items: center; gap: 14px; }
+  .nav-dots { display: flex; gap: 6px; }
+  .nav-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--border); cursor: pointer; transition: all 0.2s; }
   .nav-dot.active { background: var(--primary); box-shadow: 0 0 0 3px var(--primary-light); }
-  .nav-btn {
-    width: 32px; height: 32px; border-radius: 6px; border: 1px solid var(--border);
-    background: var(--card); color: var(--text); font-size: 15px; cursor: pointer;
-    display: flex; align-items: center; justify-content: center; transition: all 0.2s;
-  }
+  .nav-btn { width: 30px; height: 30px; border-radius: 5px; border: 1px solid var(--border); background: var(--card); color: var(--text);
+    font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
   .nav-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
   .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
   .nav-btn:disabled:hover { background: var(--card); color: var(--text); border-color: var(--border); }
-  .page-indicator { font-size: 12px; color: var(--text-dim); min-width: 50px; text-align: center; }
-  .slide-title { font-size: 28px; font-weight: 700; margin-bottom: 6px; color: var(--primary-dark); }
-  .slide-subtitle { font-size: 14px; color: var(--text-dim); margin-bottom: 24px; max-width: 680px; text-align: center; line-height: 1.6; }
-  .card-grid { display: grid; gap: 14px; width: 100%; max-width: 1020px; }
+  .page-indicator { font-size: 11px; color: var(--text-dim); min-width: 45px; text-align: center; }
+  .slide-title { font-size: 26px; font-weight: 700; margin-bottom: 5px; color: var(--primary-dark); }
+  .slide-subtitle { font-size: 13px; color: var(--text-dim); margin-bottom: 20px; max-width: 650px; text-align: center; line-height: 1.55; }
+  .card-grid { display: grid; gap: 12px; width: 100%; max-width: 1000px; }
   .card-grid.cols-2 { grid-template-columns: 1fr 1fr; }
   .card-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
   .card-grid.cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
-  .card {
-    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
-    padding: 18px; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s;
-  }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; }
   .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
-  .card-label {
-    font-size: 10px; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 8px; font-weight: 600;
-  }
+  .card-label { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; font-weight: 600; }
   .card-label.blue { color: var(--primary); }
   .card-label.green { color: var(--green); }
-  .card h3 { font-size: 15px; font-weight: 600; margin-bottom: 8px; line-height: 1.3; }
-  .card p, .card li { font-size: 12.5px; color: var(--text-dim); line-height: 1.6; }
+  .card h3 { font-size: 14px; font-weight: 600; margin-bottom: 7px; line-height: 1.3; }
+  .card p, .card li { font-size: 12px; color: var(--text-dim); line-height: 1.55; }
   .card ul { list-style: none; padding: 0; }
-  .card li { padding-left: 13px; position: relative; margin-bottom: 4px; }
+  .card li { padding-left: 12px; position: relative; margin-bottom: 3px; }
   .card li::before { content: "•"; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
   .card strong { color: var(--text); }
-  .stat { font-size: 26px; font-weight: 800; margin: 4px 0 2px; color: var(--primary); }
-  .stat span { font-size: 11px; color: var(--text-dim); font-weight: 400; }
-  .highlight-box {
-    background: var(--primary-light); border: 1px solid rgba(29,78,216,0.12);
-    border-radius: 8px; padding: 12px 16px; margin-top: 10px;
-  }
-  .highlight-box p { font-size: 12px; color: var(--primary-dark); line-height: 1.55; }
+  .stat { font-size: 24px; font-weight: 800; margin: 3px 0 2px; color: var(--primary); }
+  .stat span { font-size: 10px; color: var(--text-dim); font-weight: 400; }
+  .highlight-box { background: var(--primary-light); border: 1px solid rgba(29,78,216,0.1); border-radius: 7px; padding: 10px 14px; margin-top: 8px; }
+  .highlight-box p { font-size: 11px; color: var(--primary-dark); line-height: 1.5; }
   .highlight-box strong { color: var(--primary); }
-  .progress-bar { width: 100%; height: 5px; background: var(--border); border-radius: 3px; margin: 5px 0 3px; overflow: hidden; }
+  .progress-bar { width: 100%; height: 4px; background: var(--border); border-radius: 3px; margin: 4px 0 2px; overflow: hidden; }
   .progress-fill { height: 100%; border-radius: 3px; background: var(--primary); transition: width 0.8s ease; }
-  .badge {
-    display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: 10px; font-weight: 600;
-    margin-right: 5px; margin-bottom: 5px; background: var(--primary-light); color: var(--primary);
-  }
-  .timeline { width: 100%; max-width: 820px; }
-  .timeline-item { display: flex; gap: 18px; margin-bottom: 14px; padding: 12px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; box-shadow: var(--shadow); }
-  .timeline-month { min-width: 58px; font-size: 11px; font-weight: 700; color: var(--primary); padding-top: 2px; text-align: right; }
-  .timeline-content h4 { font-size: 13px; font-weight: 600; margin-bottom: 3px; }
-  .timeline-content p { font-size: 11.5px; color: var(--text-dim); line-height: 1.55; }
-  .click-zone { position: fixed; top: 0; bottom: 50px; width: 30%; z-index: 50; cursor: pointer; }
-  .click-zone.left { left: 0; }
-  .click-zone.right { right: 0; }
-  .kbd-hint { position: fixed; bottom: 56px; right: 24px; font-size: 10px; color: var(--text-light); }
-  .kbd { display: inline-block; padding: 1px 4px; border-radius: 3px; border: 1px solid var(--border); font-family: monospace; font-size: 9px; margin: 0 1px; }
-  .title-slide .big-title { font-size: 36px; font-weight: 800; text-align: center; line-height: 1.2; margin-bottom: 10px; color: var(--primary-dark); }
-  .title-slide .tagline { font-size: 15px; color: var(--text-dim); text-align: center; margin-bottom: 24px; }
-  .title-slide .meta { font-size: 11px; color: var(--text-light); text-align: center; opacity: 0.7; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 99px; font-size: 9px; font-weight: 600; margin-right: 4px; margin-bottom: 4px;
+    background: var(--primary-light); color: var(--primary); }
+  .timeline { width: 100%; max-width: 800px; }
+  .timeline-item { display: flex; gap: 16px; margin-bottom: 12px; padding: 10px; background: var(--card); border: 1px solid var(--border); border-radius: 7px; box-shadow: var(--shadow); }
+  .timeline-month { min-width: 52px; font-size: 10px; font-weight: 700; color: var(--primary); padding-top: 2px; text-align: right; }
+  .timeline-content h4 { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
+  .timeline-content p { font-size: 11px; color: var(--text-dim); line-height: 1.5; }
+  .click-zone { position: fixed; top: 0; bottom: 48px; width: 30%; z-index: 50; cursor: pointer; }
+  .click-zone.left { left: 0; } .click-zone.right { right: 0; }
+  .kbd-hint { position: fixed; bottom: 54px; right: 20px; font-size: 9px; color: var(--text-light); }
+  .kbd { display: inline-block; padding: 1px 3px; border-radius: 2px; border: 1px solid var(--border); font-family: monospace; font-size: 8px; margin: 0 1px; }
+  .title-slide .big-title { font-size: 34px; font-weight: 800; text-align: center; line-height: 1.2; margin-bottom: 8px; color: var(--primary-dark); }
+  .title-slide .tagline { font-size: 14px; color: var(--text-dim); text-align: center; margin-bottom: 20px; }
+  .title-slide .meta { font-size: 10px; color: var(--text-light); text-align: center; opacity: 0.7; }
 
-  /* Chart styles */
-  .chart-container { width: 100%; }
+  /* Comparison split layout */
+  .split-layout { display: grid; grid-template-columns: 3fr 1.2fr; gap: 16px; width: 100%; max-width: 1000px; }
+  .split-left { min-width: 0; }
+  .split-right { display: flex; flex-direction: column; gap: 12px; }
+
+  /* Domain matrix table */
+  .domain-matrix { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 11px; }
+  .domain-matrix th { background: #f1f5f9; padding: 7px 8px; font-weight: 600; color: var(--text); border: 1px solid var(--border); text-align: center; position: sticky; top: 0; z-index: 1; }
+  .domain-matrix th:first-child { text-align: left; border-radius: 6px 0 0 0; min-width: 70px; }
+  .domain-matrix th:last-child { border-radius: 0 6px 0 0; }
+  .domain-matrix th.domain-header { background: var(--primary); color: white; font-size: 10px; letter-spacing: 0.5px; }
+  .domain-matrix td { padding: 5px 8px; border: 1px solid var(--border); text-align: center; vertical-align: middle; }
+  .domain-matrix td:first-child { text-align: left; font-weight: 500; color: var(--text); background: #fafbfc; }
+  .domain-matrix td.domain-label { background: #e8f0fe; font-weight: 700; color: var(--primary-dark); text-align: left; }
+  .domain-matrix td.empty { background: #fefce8; cursor: pointer; }
+  .domain-matrix td.empty:hover { background: #fef9c3; }
+  .domain-matrix tr:hover td { background: #f8fafc; }
+  .domain-matrix tr:hover td:first-child { background: #fafbfc; }
+  .domain-matrix tr:hover td.domain-label { background: #e8f0fe; }
+  .cell-content { display: block; min-height: 18px; padding: 1px 2px; border-radius: 3px; }
+  .cell-content:empty::before { content: "待补充"; color: #d1d5db; font-style: italic; font-size: 10px; }
+
+  /* Edit mode styles */
+  .edit-cell-input {
+    width: 100%; min-height: 22px; border: 2px solid var(--primary); border-radius: 3px;
+    padding: 2px 4px; font-size: 11px; font-family: inherit; resize: vertical;
+    outline: none; background: #eff6ff;
+  }
+  .edit-toolbar {
+    position: fixed; top: 12px; right: 12px; z-index: 200;
+    display: flex; gap: 8px; opacity: 0; pointer-events: none; transition: opacity 0.3s;
+  }
+  .edit-toolbar.visible { opacity: 1; pointer-events: auto; }
+  .edit-btn {
+    padding: 6px 14px; border-radius: 6px; border: 1px solid var(--border);
+    background: var(--card); color: var(--text); font-size: 12px; font-weight: 600;
+    cursor: pointer; box-shadow: var(--shadow); transition: all 0.2s;
+  }
+  .edit-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+  .edit-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+  .edit-btn.save { background: var(--green); color: white; border-color: var(--green); }
+  .edit-btn.save:hover { background: #059669; }
+  .edit-btn.export { background: var(--purple); color: white; border-color: var(--purple); }
+  .edit-btn.export:hover { background: #7c3aed; }
+  .edit-hint {
+    position: fixed; top: 50px; right: 12px; z-index: 200;
+    background: #fef3c7; border: 1px solid #fbbf24; border-radius: 6px;
+    padding: 6px 12px; font-size: 11px; color: #92400e;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s;
+  }
+  .edit-hint.visible { opacity: 1; }
+  .edit-indicator {
+    display: none; position: absolute; top: -2px; right: -2px;
+    width: 8px; height: 8px; background: var(--primary); border-radius: 50%;
+  }
+  .editing .edit-indicator { display: block; }
+
+  /* Gantt chart */
+  .gantt-container { width: 100%; overflow-x: auto; }
+  .gantt-row { display: flex; align-items: center; margin-bottom: 5px; }
+  .gantt-label { min-width: 100px; font-size: 11px; font-weight: 600; color: var(--text); padding-right: 10px; }
+  .gantt-track { flex: 1; height: 20px; position: relative; background: #f1f5f9; border-radius: 3px; }
+  .gantt-bar { position: absolute; top: 1px; bottom: 1px; border-radius: 3px; display: flex; align-items: center; padding-left: 5px; font-size: 9px; font-weight: 600; color: white; }
+  .gantt-bar.blue { background: #3b82f6; } .gantt-bar.green { background: #10b981; }
+  .gantt-bar.amber { background: #f59e0b; } .gantt-bar.purple { background: #8b5cf6; }
+  .gantt-bar.red { background: #ef4444; } .gantt-bar.done { background: #22c55e; }
+  .gantt-ticks { display: flex; margin-bottom: 3px; margin-left: 110px; }
+  .gantt-tick { flex: 1; font-size: 8px; color: var(--text-light); text-align: center; }
+  .gantt-divider { position: absolute; top: 0; bottom: 0; width: 1px; background: #e2e8f0; }
+
+  /* Before/After */
+  .comparison { display: grid; grid-template-columns: 1fr auto 1fr; gap: 14px; align-items: center; }
+  .comparison-arrow { font-size: 22px; color: var(--primary); }
+  .comparison-card { padding: 14px; border-radius: 8px; }
+  .comparison-card.before { background: #fef2f2; border: 1px solid #fecaca; }
+  .comparison-card.after { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .comparison-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 5px; }
+  .comparison-card.before h4 { color: #991b1b; } .comparison-card.after h4 { color: #166534; }
+  .comparison-card p { font-size: 11px; line-height: 1.55; }
+  .comparison-card.before p { color: #7f1d1d; } .comparison-card.after p { color: #14532d; }
+
+  /* Bar chart */
   .bar-chart { width: 100%; }
-  .bar-row { display: flex; align-items: center; margin-bottom: 10px; }
-  .bar-label { min-width: 70px; font-size: 12px; font-weight: 600; color: var(--text); text-align: right; padding-right: 12px; }
-  .bar-track { flex: 1; height: 24px; background: #f1f5f9; border-radius: 6px; overflow: hidden; position: relative; }
-  .bar-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 8px; font-size: 11px; font-weight: 700; color: white; transition: width 1s ease; }
+  .bar-row { display: flex; align-items: center; margin-bottom: 8px; }
+  .bar-label { min-width: 60px; font-size: 11px; font-weight: 600; color: var(--text); text-align: right; padding-right: 10px; }
+  .bar-track { flex: 1; height: 20px; background: #f1f5f9; border-radius: 5px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 5px; display: flex; align-items: center; padding-left: 6px; font-size: 10px; font-weight: 700; color: white; transition: width 1s ease; }
   .bar-fill.red { background: linear-gradient(90deg, #ef4444, #f87171); }
   .bar-fill.amber { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
   .bar-fill.green { background: linear-gradient(90deg, #10b981, #34d399); }
   .bar-fill.purple { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
   .bar-fill.blue { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
-  .bar-fill.teal { background: linear-gradient(90deg, #14b8a6, #2dd4bf); }
 
-  /* Comparison matrix */
-  .matrix-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 12px; }
-  .matrix-table th { background: #f8fafc; padding: 10px 12px; font-weight: 600; color: var(--text); border-bottom: 2px solid var(--border); text-align: center; }
-  .matrix-table th:first-child { text-align: left; border-radius: 8px 0 0 0; }
-  .matrix-table th:last-child { border-radius: 0 8px 0 0; }
-  .matrix-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: center; }
-  .matrix-table td:first-child { text-align: left; font-weight: 500; color: var(--text); }
-  .matrix-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
-  .matrix-table tr:last-child td:last-child { border-radius: 0 0 8px 0; }
-  .matrix-table tr:hover td { background: #f8fafc; }
-  .status-yes { color: var(--green); font-weight: 700; }
-  .status-partial { color: var(--amber); font-weight: 700; }
-  .status-no { color: var(--text-light); }
-
-  /* Gantt chart */
-  .gantt-container { width: 100%; overflow-x: auto; }
-  .gantt-row { display: flex; align-items: center; margin-bottom: 6px; }
-  .gantt-label { min-width: 120px; font-size: 12px; font-weight: 600; color: var(--text); padding-right: 12px; }
-  .gantt-track { flex: 1; height: 22px; position: relative; background: #f1f5f9; border-radius: 4px; }
-  .gantt-bar { position: absolute; top: 2px; bottom: 2px; border-radius: 4px; display: flex; align-items: center; padding-left: 6px; font-size: 10px; font-weight: 600; color: white; }
-  .gantt-bar.blue { background: #3b82f6; }
-  .gantt-bar.green { background: #10b981; }
-  .gantt-bar.amber { background: #f59e0b; }
-  .gantt-bar.purple { background: #8b5cf6; }
-  .gantt-bar.red { background: #ef4444; }
-  .gantt-bar.done { background: #22c55e; }
-  .gantt-ticks { display: flex; margin-bottom: 4px; margin-left: 132px; }
-  .gantt-tick { flex: 1; font-size: 9px; color: var(--text-light); text-align: center; }
-  .gantt-divider { position: absolute; top: 0; bottom: 0; width: 1px; background: #e2e8f0; }
-
-  /* Before/After comparison */
-  .comparison { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: center; }
-  .comparison-arrow { font-size: 24px; color: var(--primary); }
-  .comparison-card { padding: 16px; border-radius: 10px; }
-  .comparison-card.before { background: #fef2f2; border: 1px solid #fecaca; }
-  .comparison-card.after { background: #f0fdf4; border: 1px solid #bbf7d0; }
-  .comparison-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
-  .comparison-card.before h4 { color: #991b1b; }
-  .comparison-card.after h4 { color: #166534; }
-  .comparison-card p { font-size: 12px; line-height: 1.6; }
-  .comparison-card.before p { color: #7f1d1d; }
-  .comparison-card.after p { color: #14532d; }
-
-  /* Animated numbers */
-  .animated-stat { transition: all 0.3s; }
-
-  /* Radar chart container */
-  .radar-container { display: flex; justify-content: center; }
+  /* Data flow */
+  .flow-steps { display: flex; align-items: center; justify-content: center; gap: 0; }
+  .flow-step { text-align: center; padding: 10px 14px; border-radius: 7px; min-width: 120px; }
+  .flow-arrow { font-size: 18px; color: var(--primary); padding: 0 6px; }
 
   @media (max-width: 900px) {
-    .slide { padding: 32px 16px; }
+    .slide { padding: 28px 14px; }
     .card-grid.cols-2, .card-grid.cols-3, .card-grid.cols-4 { grid-template-columns: 1fr; }
-    .slide-title { font-size: 22px; }
-    .title-slide .big-title { font-size: 26px; }
-    .comparison { grid-template-columns: 1fr; }
-    .comparison-arrow { transform: rotate(90deg); }
+    .split-layout { grid-template-columns: 1fr; }
+    .slide-title { font-size: 20px; } .title-slide .big-title { font-size: 24px; }
+    .comparison { grid-template-columns: 1fr; } .comparison-arrow { transform: rotate(90deg); }
   }
 </style>
 </head>
@@ -192,13 +184,21 @@
 <div class="click-zone left" onclick="prevSlide()"></div>
 <div class="click-zone right" onclick="nextSlide()"></div>
 
+<!-- Edit toolbar -->
+<div class="edit-toolbar" id="editToolbar">
+  <button class="edit-btn" id="editToggle" onclick="toggleEdit()">✏️ 编辑</button>
+  <button class="edit-btn save" id="saveBtn" onclick="saveEdit()" style="display:none;">💾 保存</button>
+  <button class="edit-btn export" id="exportBtn" onclick="exportHTML()" style="display:none;">📥 导出HTML</button>
+</div>
+<div class="edit-hint" id="editHint">双击单元格编辑内容 · Esc 退出编辑</div>
+
 <div class="slides-wrapper">
 
   <!-- 0: Cover -->
   <div class="slide title-slide active">
     <div class="big-title">26 上半年工作汇报<br>与下半年规划</div>
     <div class="tagline">集团化整合 · AI 场景落地 · 数据治理与稳定性建设</div>
-    <div style="margin-bottom:24px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+    <div style="margin-bottom:20px;display:flex;gap:6px;justify-content:center;flex-wrap:wrap;">
       <span class="badge">组织协同</span><span class="badge">AI 创新</span><span class="badge">数字化底座</span><span class="badge">稳定性保障</span>
     </div>
     <div class="meta">汇报人：康杰 &nbsp;|&nbsp; 2026 年 6 月</div>
@@ -212,112 +212,240 @@
       <div class="card">
         <div class="card-label blue">一、集团化整合</div>
         <h3>统一底座，消除孤岛</h3>
-        <p>推进马消、信盟、中科金、枭龙云四套独立系统的多租户底座建设，完成集团门户、Offer、入职、采购等核心系统的差异梳理与统一化改造。</p>
+        <p>推进马消、信盟、中科金、枭龙云四套独立系统的多租户底座建设，完成核心系统差异梳理与统一化改造。</p>
       </div>
       <div class="card">
         <div class="card-label blue">二、AI 场景落地</div>
         <h3>从验证到生产部署</h3>
-        <p>在招聘、学习、情报、法务、会议等场景实现 AI 能力部署，完成多智能体协作与规则引擎验证，获取可量化的效率指标。</p>
+        <p>在招聘、学习、情报、法务等场景实现 AI 能力部署，完成多智能体协作验证，获取可量化效率指标。</p>
       </div>
       <div class="card">
         <div class="card-label blue">三、治理与数据底座</div>
         <h3>风控与资产化体系</h3>
-        <p>建立权限生命周期 SOP、SLA 预警；推动物资/采购数据入仓，构建集团级闲置资产池与分析看板，提升管理透明度。</p>
+        <p>建立权限生命周期 SOP、SLA 预警；推动物资/采购数据入仓，构建集团级闲置资产池与分析看板。</p>
       </div>
     </div>
-    <div class="card-grid cols-1" style="max-width:1020px;margin-top:12px;">
+    <div class="card-grid cols-1" style="max-width:1000px;margin-top:10px;">
       <div class="card">
         <div class="card-label blue">四、稳定性与技术基建</div>
-        <div class="card-grid cols-3" style="gap:10px;">
-          <div>
-            <h3>系统稳定性</h3>
-            <ul>
-              <li><strong>0 生产事件</strong>，告警总量降低 20%，响应率提升至 70%+</li>
-              <li>资源监控与告警覆盖率提升至 99%+</li>
-              <li>推动 10+ 应用下线、30+ 容器化应用降配，释放 60c+ 资源</li>
-            </ul>
-          </div>
-          <div>
-            <h3>自动化测试体系</h3>
-            <ul>
-              <li>搭建 Python+Pytest+Allure 分层框架</li>
-              <li>累计开发 <strong>847 个</strong>用例，连续 11 周稳定运行，稳定性 95%+</li>
-              <li>AI 生成用例有效率 70%+，整体测试效率提升 45%</li>
-            </ul>
-          </div>
-          <div>
-            <h3>信创与基础设施</h3>
-            <ul>
-              <li>法务诉讼系统信创改造完成，3/19 按期切流上线</li>
-              <li>TiDB 数据同步完成，配套系统信创适配推进中</li>
-              <li>官网双活故障演练推进，满足监管多活要求</li>
-            </ul>
-          </div>
+        <div class="card-grid cols-3" style="gap:8px;">
+          <div><h3>系统稳定性</h3><ul>
+            <li><strong>0 生产事件</strong>，告警总量降低 20%</li>
+            <li>监控覆盖率 99%+，释放 60c+ 资源</li>
+          </ul></div>
+          <div><h3>自动化测试</h3><ul>
+            <li><strong>847 个</strong>用例，11 周稳定运行 95%+</li>
+            <li>AI 生成有效率 70%+，效率提升 45%</li>
+          </ul></div>
+          <div><h3>信创基建</h3><ul>
+            <li>法务诉讼系统信创改造 3/19 上线</li>
+            <li>TiDB 数据同步完成，双活演练推进中</li>
+          </ul></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 2-1: 集团化 - 现状差异对比 -->
+  <!-- 2-1: 集团化 - 现状对比（左右分栏 + 领域矩阵 + 编辑功能） -->
   <div class="slide">
     <div class="slide-title">一、集团化整合 — 四司差异现状</div>
     <div class="slide-subtitle">先看清我们站在哪里：四套独立系统、四套流程标准、四份数据口径，集团化管理的前提是差异显性化。</div>
-    <div class="card-grid cols-2" style="gap:18px;">
-      <div class="card">
-        <div class="card-label blue">流程复杂度对比（审批节点数）</div>
-        <div class="bar-chart" style="margin-top:12px;">
-          <div class="bar-row">
-            <div class="bar-label" style="color:var(--red);">马消</div>
-            <div class="bar-track"><div class="bar-fill red" style="width:85%;">30+</div></div>
+    <div class="split-layout">
+      <!-- Left: Domain matrix -->
+      <div class="split-left">
+        <div class="card" style="position:relative;">
+          <div class="card-label blue">各领域系统覆盖现状（双击单元格可编辑）</div>
+          <div class="edit-indicator"></div>
+          <div style="overflow-x:auto;max-height:400px;overflow-y:auto;">
+            <table class="domain-matrix" id="domainMatrix">
+              <thead>
+                <tr>
+                  <th style="min-width:70px;">领域</th>
+                  <th style="color:var(--red);min-width:90px;">马消</th>
+                  <th style="color:var(--amber);min-width:90px;">信盟</th>
+                  <th style="color:var(--green);min-width:90px;">中科金</th>
+                  <th style="color:var(--purple);min-width:90px;">枭龙云</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- HR 领域 -->
+                <tr><td colspan="5" class="domain-label">📋 HR 领域</td></tr>
+                <tr>
+                  <td>核心 HR 系统</td>
+                  <td><span class="cell-content" data-editable="true">金蝶核心</span></td>
+                  <td><span class="cell-content" data-editable="true">mHR</span></td>
+                  <td><span class="cell-content" data-editable="true">智学</span></td>
+                  <td><span class="cell-content" data-editable="true">马小i</span></td>
+                </tr>
+                <tr>
+                  <td>招聘管理</td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                </tr>
+                <tr>
+                  <td>考勤管理</td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                </tr>
+                <tr>
+                  <td>薪酬管理</td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                </tr>
+                <tr>
+                  <td>绩效/OKR</td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                </tr>
+                <!-- 采购领域 -->
+                <tr><td colspan="5" class="domain-label">🛒 采购领域</td></tr>
+                <tr>
+                  <td>供应商管理</td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                </tr>
+                <tr>
+                  <td>招投标管理</td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                </tr>
+                <tr>
+                  <td>履约管理</td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                </tr>
+                <tr>
+                  <td>采购商城</td>
+                  <td><span class="cell-content" data-editable="true">得力商城</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                </tr>
+                <!-- 财务领域 -->
+                <tr><td colspan="5" class="domain-label">💰 财务领域</td></tr>
+                <tr>
+                  <td>报销系统</td>
+                  <td><span class="cell-content" data-editable="true">独立系统</span></td>
+                  <td><span class="cell-content" data-editable="true">飞书审批</span></td>
+                  <td><span class="cell-content" data-editable="true">独立系统</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                </tr>
+                <tr>
+                  <td>预算管理</td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                </tr>
+                <tr>
+                  <td>对账结算</td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                </tr>
+                <!-- 监督管理领域 -->
+                <tr><td colspan="5" class="domain-label">🔍 监督管理领域</td></tr>
+                <tr>
+                  <td>审计系统</td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                </tr>
+                <tr>
+                  <td>合规管理</td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                </tr>
+                <tr>
+                  <td>风控体系</td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                </tr>
+                <!-- 协同领域 -->
+                <tr><td colspan="5" class="domain-label">🤝 协同领域</td></tr>
+                <tr>
+                  <td>OA 审批</td>
+                  <td><span class="cell-content" data-editable="true">蓝凌 OA</span></td>
+                  <td><span class="cell-content" data-editable="true">飞书审批</span></td>
+                  <td><span class="cell-content" data-editable="true">本地 OA</span></td>
+                  <td><span class="cell-content" data-editable="true">SaaS</span></td>
+                </tr>
+                <tr>
+                  <td>待办中心</td>
+                  <td><span class="cell-content" data-editable="true">分散</span></td>
+                  <td><span class="cell-content" data-editable="true">飞书</span></td>
+                  <td><span class="cell-content" data-editable="true">缺</span></td>
+                  <td><span class="cell-content" data-editable="true">缺</span></td>
+                </tr>
+                <tr>
+                  <td>收发文</td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                </tr>
+                <tr>
+                  <td>印章管理</td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                  <td><span class="cell-content" data-editable="true">待补充</span></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div class="bar-row">
-            <div class="bar-label" style="color:var(--green);">中科金</div>
-            <div class="bar-track"><div class="bar-fill green" style="width:50%;">18</div></div>
-          </div>
-          <div class="bar-row">
-            <div class="bar-label" style="color:var(--amber);">信盟</div>
-            <div class="bar-track"><div class="bar-fill amber" style="width:36%;">12-15</div></div>
-          </div>
-          <div class="bar-row">
-            <div class="bar-label" style="color:var(--purple);">枭龙云</div>
-            <div class="bar-track"><div class="bar-fill purple" style="width:22%;">6-8</div></div>
-          </div>
-        </div>
-        <div class="highlight-box" style="margin-top:14px;">
-          <p><strong>核心发现：</strong>马消流程最重（合规刚需），枭龙云最轻（SaaS 敏捷），差异达 <strong>4 倍</strong>，无法一刀切统一。</p>
         </div>
       </div>
-      <div class="card">
-        <div class="card-label blue">系统能力覆盖矩阵</div>
-        <table class="matrix-table" style="margin-top:8px;">
-          <tr><th>功能模块</th><th style="color:var(--red);">马消</th><th style="color:var(--amber);">信盟</th><th style="color:var(--green);">中科金</th><th style="color:var(--purple);">枭龙云</th></tr>
-          <tr><td>OA 审批</td><td><span class="status-yes">✅ 蓝凌OA</span></td><td><span class="status-yes">✅ 飞书</span></td><td><span class="status-partial">⚠️ 本地OA</span></td><td><span class="status-partial">⚠️ SaaS</span></td></tr>
-          <tr><td>HR 系统</td><td><span class="status-yes">✅ 自建</span></td><td><span class="status-partial">⚠️ 轻量</span></td><td><span class="status-yes">✅ 独立</span></td><td><span class="status-no">❌ 缺</span></td></tr>
-          <tr><td>采购系统</td><td><span class="status-yes">✅ 独立</span></td><td><span class="status-no">❌ 缺</span></td><td><span class="status-partial">⚠️ 简易</span></td><td><span class="status-no">❌ 缺</span></td></tr>
-          <tr><td>报销系统</td><td><span class="status-yes">✅ 独立</span></td><td><span class="status-partial">⚠️ 飞书</span></td><td><span class="status-yes">✅ 独立</span></td><td><span class="status-no">❌ 缺</span></td></tr>
-          <tr><td>待办中心</td><td><span class="status-partial">⚠️ 分散</span></td><td><span class="status-partial">⚠️ 飞书</span></td><td><span class="status-no">❌ 缺</span></td><td><span class="status-no">❌ 缺</span></td></tr>
-          <tr><td>多语言</td><td><span class="status-no">❌</span></td><td><span class="status-no">❌</span></td><td><span class="status-yes">✅ 6语种</span></td><td><span class="status-no">❌</span></td></tr>
-          <tr><td>SSO/IAM</td><td><span class="status-partial">⚠️ 部分</span></td><td><span class="status-yes">✅ 飞书</span></td><td><span class="status-no">❌ 独立</span></td><td><span class="status-partial">⚠️ SSO</span></td></tr>
-        </table>
-      </div>
-    </div>
-    <div class="card" style="max-width:1020px;width:100%;margin-top:14px;">
-      <div class="card-label blue" style="margin-bottom:8px;">从差异引出三大问题</div>
-      <div class="card-grid cols-3" style="gap:12px;">
-        <div style="text-align:center;">
-          <div style="font-size:36px;margin-bottom:4px;">🏗️</div>
-          <h3 style="color:var(--red);font-size:14px;margin-bottom:6px;">问题一：重复建设成本高</h3>
-          <p>四套独立系统并行，每套都有采购、入职、审批模块，重复投入开发与运维，难以统一升级。</p>
+      <!-- Right: Target state + Problems -->
+      <div class="split-right">
+        <div class="card" style="border:2px dashed var(--primary);background:var(--primary-light);">
+          <div class="card-label blue">🎯 目标态：统一底座</div>
+          <ul style="font-size:11px;">
+            <li><strong>多租户架构</strong>：一套系统，四主体独立运行</li>
+            <li><strong>配置化流程</strong>：用配置代替定制</li>
+            <li><strong>数据统一入仓</strong>：全局视图</li>
+          </ul>
         </div>
-        <div style="text-align:center;">
-          <div style="font-size:36px;margin-bottom:4px;">📐</div>
-          <h3 style="color:var(--amber);font-size:14px;margin-bottom:6px;">问题二：流程标准不统一</h3>
-          <p>同是采购审批，马消 30+ 节点、信盟 12 个，集团无法横向对比，管理决策缺乏统一口径。</p>
+        <div class="card" style="background:#f0fdf4;border:1px solid #bbf7d0;">
+          <div class="card-label green">✅ 已就位能力</div>
+          <ul style="font-size:11px;">
+            <li>SSO/IAM/EDDS 已打通</li>
+            <li>组织架构与账号体统一</li>
+          </ul>
         </div>
-        <div style="text-align:center;">
-          <div style="font-size:36px;margin-bottom:4px;">🧩</div>
-          <h3 style="color:var(--purple);font-size:14px;margin-bottom:6px;">问题三：数据孤岛</h3>
-          <p>各司数据分散，物资调拨、预算管控、人力分析缺乏全局视图，管理层看不到"一张图"。</p>
+        <div class="card">
+          <div class="card-label blue">三大问题</div>
+          <div style="font-size:11px;">
+            <div style="margin-bottom:8px;padding:6px 8px;background:#fef2f2;border-radius:4px;border-left:3px solid var(--red);">
+              <strong style="color:var(--red);">重复建设</strong><br>四套系统并行，重复投入
+            </div>
+            <div style="margin-bottom:8px;padding:6px 8px;background:#fffbeb;border-radius:4px;border-left:3px solid var(--amber);">
+              <strong style="color:var(--amber);">流程不统一</strong><br>无法横向对比决策
+            </div>
+            <div style="padding:6px 8px;background:#faf5ff;border-radius:4px;border-left:3px solid var(--purple);">
+              <strong style="color:var(--purple);">数据孤岛</strong><br>缺乏全局视图
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -353,43 +481,17 @@
         </div>
       </div>
     </div>
-    <div class="card" style="max-width:1020px;width:100%;margin-top:12px;">
-      <div class="card-label blue" style="margin-bottom:8px;">核心系统切换进度</div>
+    <div class="card" style="max-width:1000px;width:100%;margin-top:10px;">
+      <div class="card-label blue" style="margin-bottom:6px;">核心系统切换进度</div>
       <div class="gantt-container">
         <div class="gantt-ticks">
           <div class="gantt-tick">Q2</div><div class="gantt-tick">Q2</div><div class="gantt-tick">Q3</div><div class="gantt-tick">Q3</div><div class="gantt-tick">Q4</div><div class="gantt-tick">Q4</div>
         </div>
-        <div class="gantt-row">
-          <div class="gantt-label">集团门户</div>
-          <div class="gantt-track">
-            <div class="gantt-bar done" style="left:0%;width:50%;">✅ 已完成</div>
-          </div>
-        </div>
-        <div class="gantt-row">
-          <div class="gantt-label">统一待办</div>
-          <div class="gantt-track">
-            <div class="gantt-bar done" style="left:15%;width:40%;">✅ 待上线</div>
-          </div>
-        </div>
-        <div class="gantt-row">
-          <div class="gantt-label">Offer 系统</div>
-          <div class="gantt-track">
-            <div class="gantt-bar blue" style="left:10%;width:30%;">开发中 50%</div>
-            <div class="gantt-divider" style="left:40%;"></div>
-          </div>
-        </div>
-        <div class="gantt-row">
-          <div class="gantt-label">AI 入职</div>
-          <div class="gantt-track">
-            <div class="gantt-bar amber" style="left:25%;width:20%;">设计中 20%</div>
-          </div>
-        </div>
-        <div class="gantt-row">
-          <div class="gantt-label">中科金报销</div>
-          <div class="gantt-track">
-            <div class="gantt-bar green" style="left:5%;width:35%;">开发中 70%</div>
-          </div>
-        </div>
+        <div class="gantt-row"><div class="gantt-label">集团门户</div><div class="gantt-track"><div class="gantt-bar done" style="left:0%;width:50%;">✅ 已完成</div></div></div>
+        <div class="gantt-row"><div class="gantt-label">统一待办</div><div class="gantt-track"><div class="gantt-bar done" style="left:15%;width:40%;">✅ 待上线</div></div></div>
+        <div class="gantt-row"><div class="gantt-label">Offer 系统</div><div class="gantt-track"><div class="gantt-bar blue" style="left:10%;width:30%;">开发中 50%</div></div></div>
+        <div class="gantt-row"><div class="gantt-label">AI 入职</div><div class="gantt-track"><div class="gantt-bar amber" style="left:25%;width:20%;">设计中 20%</div></div></div>
+        <div class="gantt-row"><div class="gantt-label">中科金报销</div><div class="gantt-track"><div class="gantt-bar green" style="left:5%;width:35%;">开发中 70%</div></div></div>
       </div>
     </div>
   </div>
@@ -398,8 +500,8 @@
   <div class="slide">
     <div class="slide-title">一、集团化整合 — 复盘与反思</div>
     <div class="slide-subtitle">从推进过程中的偏差，重新审视我们对业务的认知和做事方式。</div>
-    <div class="card" style="max-width:900px;width:100%;margin-bottom:16px;">
-      <h3 style="font-size:15px;margin-bottom:12px;color:var(--primary-dark);">业务认知升级：集团化不是"统一"，是"统一底座 + 差异共存"</h3>
+    <div class="card" style="max-width:880px;width:100%;margin-bottom:14px;">
+      <h3 style="font-size:14px;margin-bottom:10px;color:var(--primary-dark);">业务认知升级：集团化不是"统一"，是"统一底座 + 差异共存"</h3>
       <div class="comparison">
         <div class="comparison-card before">
           <h4>Before：替代思维</h4>
@@ -412,17 +514,17 @@
         </div>
       </div>
     </div>
-    <div class="card" style="max-width:900px;width:100%;">
-      <h3 style="font-size:15px;margin-bottom:12px;color:var(--primary-dark);">方法论调整：差异确认必须在方案锁定之前</h3>
+    <div class="card" style="max-width:880px;width:100%;">
+      <h3 style="font-size:14px;margin-bottom:10px;color:var(--primary-dark);">方法论调整：差异确认必须在方案锁定之前</h3>
       <div class="comparison">
         <div class="comparison-card before">
           <h4>Before：并行推进</h4>
-          <p>Offer 系统、AI 入职差异梳理与开发并行推进，导致反复返工，进度滞后（Offer 50%、入职 20%）。</p>
+          <p>差异梳理与开发并行推进，导致反复返工，进度滞后（Offer 50%、入职 20%）。</p>
         </div>
         <div class="comparison-arrow">→</div>
         <div class="comparison-card after">
           <h4>After：四步流程</h4>
-          <p>严格执行"差异确认 → 方案锁定 → 开发 → 切换"，每步设里程碑评审，避免边做边改。后续所有集团化项目按此执行。</p>
+          <p>严格执行"差异确认 → 方案锁定 → 开发 → 切换"，每步设里程碑评审，避免边做边改。</p>
         </div>
       </div>
     </div>
@@ -432,32 +534,32 @@
   <div class="slide">
     <div class="slide-title">二、AI 场景落地与数据表现</div>
     <div class="slide-subtitle">在核心业务流与强监管领域完成 AI 能力部署，取得可量化的效率提升。</div>
-    <div class="card-grid cols-4" style="gap:12px;max-width:1020px;">
+    <div class="card-grid cols-4" style="gap:10px;max-width:1000px;">
       <div class="card" style="text-align:center;">
         <div class="stat animated-stat" data-target="20" data-suffix="x">0x<span> 效率提升</span></div>
-        <p>AI Mentor 内容生产<br><span style="font-size:10px;color:var(--text-light)">10PD → 0.5PD/切片</span></p>
+        <p>AI Mentor 内容生产<br><span style="font-size:9px;color:var(--text-light)">10PD → 0.5PD/切片</span></p>
       </div>
       <div class="card" style="text-align:center;">
         <div class="stat animated-stat" data-target="98" data-suffix="%">0%<span> 替代率</span></div>
-        <p>会议舆情 AI 初筛<br><span style="font-size:10px;color:var(--text-light)">日均 2000+ 场会议</span></p>
+        <p>会议舆情 AI 初筛<br><span style="font-size:9px;color:var(--text-light)">日均 2000+ 场会议</span></p>
       </div>
       <div class="card" style="text-align:center;">
         <div class="stat animated-stat" data-target="15" data-suffix="min">0min<span> 响应时间</span></div>
-        <p>AI 情报官政策推送<br><span style="font-size:10px;color:var(--text-light)">从 2 天缩短至 15 分钟</span></p>
+        <p>AI 情报官政策推送<br><span style="font-size:9px;color:var(--text-light)">从 2 天缩短至 15 分钟</span></p>
       </div>
       <div class="card" style="text-align:center;">
         <div class="stat animated-stat" data-target="1916" data-suffix="">0<span> 覆盖员工</span></div>
-        <p>AI 组织诊断技术部<br><span style="font-size:10px;color:var(--text-light)">16,963 条 OKR 分析</span></p>
+        <p>AI 组织诊断技术部<br><span style="font-size:9px;color:var(--text-light)">16,963 条 OKR 分析</span></p>
       </div>
     </div>
-    <div class="card-grid cols-2" style="max-width:1020px;margin-top:12px;">
+    <div class="card-grid cols-2" style="max-width:1000px;margin-top:10px;">
       <div class="card">
         <div class="card-label blue">核心业务场景</div>
         <ul>
-          <li><strong>招聘需求解构</strong>：6 字段输入 → 飞书数据补全 → 数字员工替代评估 → 双版 JD 输出</li>
-          <li><strong>Agent-Driven Delivery</strong>：需求交付质量提升 40%，流转周期缩短 30%</li>
-          <li><strong>AI 汇报洞察分析</strong>：200+ 风险规则，每日自动生成标准化报告</li>
-          <li><strong>人才盘点系统</strong>：九宫格可视化、10+ 阶段全流程线上化，支持年中盘点落地</li>
+          <li><strong>招聘需求解构</strong>：6 字段输入 → 飞书数据补全 → 数字员工评估 → 双版 JD</li>
+          <li><strong>Agent-Driven Delivery</strong>：交付质量 +40%，流转周期 -30%</li>
+          <li><strong>AI 汇报洞察</strong>：200+ 风险规则，每日自动生成标准化报告</li>
+          <li><strong>人才盘点</strong>：九宫格可视化，10+ 阶段全流程线上化</li>
         </ul>
       </div>
       <div class="card">
@@ -465,8 +567,8 @@
         <ul>
           <li><strong>法务智能化</strong>：天平/OA/本地/邮件四源数据打通，合同智能审查上线</li>
           <li><strong>审计</strong>：文件检索+审计助手上线，RTMS 数据一键同步</li>
-          <li><strong>合规</strong>：法规对比+处罚分析技能上线，合规日报自动化管理</li>
-          <li><strong>内控</strong>：批量签约功能上线，减少高管签署次数与消息通知</li>
+          <li><strong>合规</strong>：法规对比+处罚分析技能上线，日报自动化</li>
+          <li><strong>内控</strong>：批量签约功能上线，减少高管签署次数</li>
         </ul>
       </div>
     </div>
@@ -480,18 +582,18 @@
       <div class="card">
         <div class="card-label blue">权限与安全</div>
         <ul>
-          <li>权限生命周期 SOP：账号"入有审批、用有期限、离有回收"</li>
-          <li>飞书 AI 能力权限规则制定，与安全团队对齐管控策略</li>
-          <li>SLA 2.0 审批超时预警上线，提升流程运行效率</li>
+          <li>权限生命周期 SOP：入有审批、用有期限、离有回收</li>
+          <li>飞书 AI 能力权限规则制定，与安全团队对齐</li>
+          <li>SLA 2.0 审批超时预警上线</li>
           <li>收发文闭环管理与催办自动化</li>
         </ul>
       </div>
       <div class="card">
         <div class="card-label blue">数据资产化</div>
         <ul>
-          <li>物资数据入仓，搭建集团闲置资产池与跨主体调拨审批</li>
-          <li>采购数据按主体拉通分析，支持集团级预算与采购决策</li>
-          <li>法务天平合同审核流程数据入仓，支撑流程效率分析</li>
+          <li>物资数据入仓，搭建集团闲置资产池与调拨审批</li>
+          <li>采购数据按主体拉通分析，支持集团级预算决策</li>
+          <li>法务合同审核数据入仓，支撑流程效率分析</li>
           <li>合规日报多维表应用全面使用</li>
         </ul>
       </div>
@@ -501,35 +603,35 @@
           <li>印章全生命周期管理可视化</li>
           <li>供应商资质智能审核试用上线</li>
           <li>招标文件智能生成方案设计完成</li>
-          <li>外包系统全链路优化：入场流程自动化、HRO 审计合规</li>
+          <li>外包系统全链路优化：入场自动化、HRO 审计</li>
         </ul>
       </div>
     </div>
-    <div class="card" style="max-width:1020px;width:100%;margin-top:12px;">
-      <div class="card-label green" style="margin-bottom:8px;">数据流转架构</div>
-      <div style="display:flex;align-items:center;justify-content:center;gap:0;">
-        <div style="text-align:center;padding:12px 16px;background:var(--primary-light);border-radius:8px;min-width:140px;">
-          <div style="font-size:24px;margin-bottom:4px;">📥</div>
-          <div style="font-size:12px;font-weight:600;color:var(--primary);">数据采集</div>
-          <div style="font-size:10px;color:var(--text-dim);margin-top:2px;">物资/采购/法务/HR</div>
+    <div class="card" style="max-width:1000px;width:100%;margin-top:10px;">
+      <div class="card-label green" style="margin-bottom:6px;">数据流转架构</div>
+      <div class="flow-steps">
+        <div class="flow-step" style="background:var(--primary-light);">
+          <div style="font-size:20px;margin-bottom:2px;">📥</div>
+          <div style="font-size:11px;font-weight:600;color:var(--primary);">数据采集</div>
+          <div style="font-size:9px;color:var(--text-dim);">物资/采购/法务/HR</div>
         </div>
-        <div style="font-size:20px;color:var(--primary);padding:0 8px;">→</div>
-        <div style="text-align:center;padding:12px 16px;background:#dbeafe;border-radius:8px;min-width:140px;">
-          <div style="font-size:24px;margin-bottom:4px;">🗄️</div>
-          <div style="font-size:12px;font-weight:600;color:var(--primary);">入仓建模</div>
-          <div style="font-size:10px;color:var(--text-dim);margin-top:2px;">TiDB / 多维表</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step" style="background:#dbeafe;">
+          <div style="font-size:20px;margin-bottom:2px;">🗄️</div>
+          <div style="font-size:11px;font-weight:600;color:var(--primary);">入仓建模</div>
+          <div style="font-size:9px;color:var(--text-dim);">TiDB / 多维表</div>
         </div>
-        <div style="font-size:20px;color:var(--primary);padding:0 8px;">→</div>
-        <div style="text-align:center;padding:12px 16px;background:#dcfce7;border-radius:8px;min-width:140px;">
-          <div style="font-size:24px;margin-bottom:4px;">📊</div>
-          <div style="font-size:12px;font-weight:600;color:#166534;">决策看板</div>
-          <div style="font-size:10px;color:#14532d;margin-top:2px;">预算/资产/效能</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step" style="background:#dcfce7;">
+          <div style="font-size:20px;margin-bottom:2px;">📊</div>
+          <div style="font-size:11px;font-weight:600;color:#166534;">决策看板</div>
+          <div style="font-size:9px;color:#14532d;">预算/资产/效能</div>
         </div>
-        <div style="font-size:20px;color:var(--primary);padding:0 8px;">→</div>
-        <div style="text-align:center;padding:12px 16px;background:#fef3c7;border-radius:8px;min-width:140px;">
-          <div style="font-size:24px;margin-bottom:4px;">🎯</div>
-          <div style="font-size:12px;font-weight:600;color:#92400e;">管理决策</div>
-          <div style="font-size:10px;color:#78350f;margin-top:2px;">资源配置/调拨</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step" style="background:#fef3c7;">
+          <div style="font-size:20px;margin-bottom:2px;">🎯</div>
+          <div style="font-size:11px;font-weight:600;color:#92400e;">管理决策</div>
+          <div style="font-size:9px;color:#78350f;">资源配置/调拨</div>
         </div>
       </div>
     </div>
@@ -543,24 +645,22 @@
       <div class="card">
         <div class="card-label blue">自动化测试体系</div>
         <ul>
-          <li>搭建 <strong>Python+Pytest+Requests+Allure</strong> 分层数据驱动框架</li>
-          <li>完成 HR、流程、协同、财采 <strong>4 大领域 8 个核心系统</strong>的接口梳理</li>
-          <li>累计开发 <strong>847 个用例</strong>（场景 108 + 单接口 738），11 周稳定运行</li>
-          <li>用例稳定性保持 <strong>95%+</strong>，回归周期大幅压缩</li>
+          <li>搭建 <strong>Python+Pytest+Requests+Allure</strong> 分层框架</li>
+          <li>完成 <strong>4 大领域 8 个核心系统</strong>接口梳理</li>
+          <li>累计 <strong>847 个用例</strong>，11 周稳定运行 95%+</li>
         </ul>
       </div>
       <div class="card">
         <div class="card-label blue">AI 辅助测试创新</div>
         <ul>
-          <li><strong>"文档即脚本"</strong>：AI 读取测试文档自动执行"提交申请→循环审批→驳回"全流程</li>
-          <li>AI 生成用例有效率 <strong>70%+</strong>，接口用例开发效率提升 <strong>50%+</strong></li>
-          <li>测试整体效率提升 <strong>45%</strong></li>
-          <li>自研 AI 测试提效工具集，开展 13+ 场专题分享</li>
+          <li><strong>"文档即脚本"</strong>：AI 读取测试文档自动执行全流程</li>
+          <li>AI 生成有效率 <strong>70%+</strong>，开发效率提升 <strong>50%+</strong></li>
+          <li>测试整体效率提升 <strong>45%</strong>，13+ 场专题分享</li>
         </ul>
       </div>
     </div>
-    <div class="highlight-box" style="max-width:1020px;width:100%;margin-top:12px;">
-      <p><strong>价值：</strong>为下半年集团化系统切换和 AI 数字员工全面上线提供了质量保障基础，确保系统迁移过程稳定可控。</p>
+    <div class="highlight-box" style="max-width:1000px;width:100%;margin-top:10px;">
+      <p><strong>价值：</strong>为下半年集团化系统切换和 AI 数字员工全面上线提供了质量保障基础。</p>
     </div>
   </div>
 
@@ -572,21 +672,21 @@
       <div class="card">
         <div class="card-label blue">系统切换</div>
         <ul>
-          <li><strong>集团化 Offer 系统</strong>：完成开发、测试与上线，支持中科金、枭龙云主体审批</li>
-          <li><strong>AI 入职</strong>：OCR+防PS+大模型预审能力上线，完成四司切换</li>
-          <li><strong>中科金门户升级</strong>：完成上线，统一底座分层治理架构落地</li>
-          <li><strong>统一待办中心</strong>：正式上线，推进各业务系统基于 SDK 全域接入</li>
-          <li><strong>智能流程平台</strong>：完成马上蓝凌 OA 全部流程迁移集成与上线</li>
+          <li><strong>集团化 Offer 系统</strong>：完成开发测试上线，支持中科金、枭龙云审批</li>
+          <li><strong>AI 入职</strong>：OCR+防PS+大模型预审上线，完成四司切换</li>
+          <li><strong>中科金门户升级</strong>：统一底座分层治理架构落地</li>
+          <li><strong>统一待办中心</strong>：正式上线，全域 SDK 接入</li>
+          <li><strong>智能流程平台</strong>：蓝凌 OA 全部流程迁移上线</li>
         </ul>
       </div>
       <div class="card">
         <div class="card-label blue">AI 与数据</div>
         <ul>
-          <li><strong>智能寻聘模块上线</strong>：RPA 接管 Boss 直聘，实现招呼→简历解析→评分全流程自动化</li>
-          <li><strong>AI 情报官对标专项</strong>：输出《组织效能对标白皮书》与薪酬对标报告</li>
-          <li><strong>会议数字员工</strong>：对话式创建日程、会后自动生成结论与行动项</li>
-          <li><strong>信盟物资数据入仓</strong>：完成数据整合建模，搭建集团化分析报表</li>
-          <li><strong>AI 课件生成</strong>：互动课堂多智能体系统上线，一键生成幻灯片/测验/白板推演</li>
+          <li><strong>智能寻聘</strong>：RPA 接管 Boss 直聘全流程自动化</li>
+          <li><strong>AI 情报官对标专项</strong>：输出《组织效能对标白皮书》</li>
+          <li><strong>会议数字员工</strong>：对话式创建日程、自动生成结论</li>
+          <li><strong>信盟物资数据入仓</strong>：搭建集团化分析报表</li>
+          <li><strong>AI 课件生成</strong>：互动课堂多智能体系统上线</li>
         </ul>
       </div>
     </div>
@@ -600,20 +700,20 @@
       <div class="card">
         <div class="card-label blue">系统收官与数据决策</div>
         <ul>
-          <li><strong>旧系统全面下线</strong>：各司独立部署的旧系统逐步关停，运维统一</li>
-          <li><strong>集团化 AI 洞察平台</strong>：搭建招聘效能、人才发展、员工效能三大看板及 AI 首页</li>
-          <li><strong>法务智能化深化</strong>：风险条款系统配置、CRM 数据打通、AI 自动校验标记</li>
-          <li><strong>合规知识库与智能检索</strong>：AI 辅助外规内化拆解与合规培训素材自动生成</li>
+          <li><strong>旧系统全面下线</strong>：各司旧系统关停，运维统一</li>
+          <li><strong>集团化 AI 洞察平台</strong>：招聘效能/人才发展/员工效能三大看板</li>
+          <li><strong>法务智能化深化</strong>：风险条款配置、CRM 打通、AI 自动校验</li>
+          <li><strong>合规知识库</strong>：AI 辅助外规内化拆解与培训素材生成</li>
         </ul>
       </div>
       <div class="card">
         <div class="card-label blue">信创与持续优化</div>
         <ul>
-          <li><strong>信创验收</strong>：完成《技术验收报告》，配合内部审计与问题整改闭环</li>
-          <li><strong>电子档案外采推广</strong>：推广至马上和枭龙云使用</li>
-          <li><strong>财务数字员工</strong>：中科金智能报销完成剩余场景与线上化审批</li>
-          <li><strong>订单全场景无纸化</strong>：语音线路/短信/投放业务对账结算付款电子化</li>
-          <li><strong>官网 SaaS 在线售卖能力建设</strong>：支付接口打通、账号体系、权限控制预研</li>
+          <li><strong>信创验收</strong>：技术验收报告，内部审计整改闭环</li>
+          <li><strong>电子档案推广</strong>：推广至马上和枭龙云</li>
+          <li><strong>财务数字员工</strong>：中科金报销完成剩余场景</li>
+          <li><strong>订单无纸化</strong>：对账结算付款电子化</li>
+          <li><strong>官网 SaaS 售卖</strong>：支付接口、账号体系预研</li>
         </ul>
       </div>
     </div>
@@ -623,59 +723,19 @@
   <div class="slide">
     <div class="slide-title">下半年整体时间轴（甘特图）</div>
     <div class="slide-subtitle">按季度划分核心目标，确保系统切换、AI 部署与数据决策有序推进。</div>
-    <div class="card" style="max-width:1020px;width:100%;">
+    <div class="card" style="max-width:1000px;width:100%;">
       <div class="gantt-container">
         <div class="gantt-ticks">
           <div class="gantt-tick">7月</div><div class="gantt-tick">8月</div><div class="gantt-tick">9月</div><div class="gantt-tick">10月</div><div class="gantt-tick">11月</div><div class="gantt-tick">12月</div>
         </div>
-        <div class="gantt-row">
-          <div class="gantt-label">Offer 系统</div>
-          <div class="gantt-track">
-            <div class="gantt-bar blue" style="left:0%;width:50%;">开发测试</div>
-          </div>
-        </div>
-        <div class="gantt-row">
-          <div class="gantt-label">AI 入职</div>
-          <div class="gantt-track">
-            <div class="gantt-bar amber" style="left:8%;width:50%;">设计→上线</div>
-          </div>
-        </div>
-        <div class="gantt-row">
-          <div class="gantt-label">中科金报销</div>
-          <div class="gantt-track">
-            <div class="gantt-bar green" style="left:0%;width:42%;">开发→上线</div>
-          </div>
-        </div>
-        <div class="gantt-row">
-          <div class="gantt-label">统一待办</div>
-          <div class="gantt-track">
-            <div class="gantt-bar done" style="left:0%;width:17%;">✅ 上线</div>
-          </div>
-        </div>
-        <div class="gantt-row">
-          <div class="gantt-label">AI 数字员工</div>
-          <div class="gantt-track">
-            <div class="gantt-bar purple" style="left:17%;width:50%;">试点→规模部署</div>
-          </div>
-        </div>
-        <div class="gantt-row">
-          <div class="gantt-label">旧系统下线</div>
-          <div class="gantt-track">
-            <div class="gantt-bar red" style="left:50%;width:50%;">迁移→关停</div>
-          </div>
-        </div>
-        <div class="gantt-row">
-          <div class="gantt-label">数据决策看板</div>
-          <div class="gantt-track">
-            <div class="gantt-bar teal" style="left:42%;width:58%;">建模→上线</div>
-          </div>
-        </div>
-        <div class="gantt-row">
-          <div class="gantt-label">信创验收</div>
-          <div class="gantt-track">
-            <div class="gantt-bar blue" style="left:58%;width:42%;">报告→审计</div>
-          </div>
-        </div>
+        <div class="gantt-row"><div class="gantt-label">Offer 系统</div><div class="gantt-track"><div class="gantt-bar blue" style="left:0%;width:50%;">开发测试</div></div></div>
+        <div class="gantt-row"><div class="gantt-label">AI 入职</div><div class="gantt-track"><div class="gantt-bar amber" style="left:8%;width:50%;">设计→上线</div></div></div>
+        <div class="gantt-row"><div class="gantt-label">中科金报销</div><div class="gantt-track"><div class="gantt-bar green" style="left:0%;width:42%;">开发→上线</div></div></div>
+        <div class="gantt-row"><div class="gantt-label">统一待办</div><div class="gantt-track"><div class="gantt-bar done" style="left:0%;width:17%;">✅ 上线</div></div></div>
+        <div class="gantt-row"><div class="gantt-label">AI 数字员工</div><div class="gantt-track"><div class="gantt-bar purple" style="left:17%;width:50%;">试点→规模部署</div></div></div>
+        <div class="gantt-row"><div class="gantt-label">旧系统下线</div><div class="gantt-track"><div class="gantt-bar red" style="left:50%;width:50%;">迁移→关停</div></div></div>
+        <div class="gantt-row"><div class="gantt-label">数据决策看板</div><div class="gantt-track"><div class="gantt-bar teal" style="left:42%;width:58%;">建模→上线</div></div></div>
+        <div class="gantt-row"><div class="gantt-label">信创验收</div><div class="gantt-track"><div class="gantt-bar blue" style="left:58%;width:42%;">报告→审计</div></div></div>
       </div>
     </div>
   </div>
@@ -683,9 +743,9 @@
   <!-- 9: Closing -->
   <div class="slide">
     <div style="text-align:center;">
-      <div class="big-title" style="font-size:34px;font-weight:800;margin-bottom:16px;color:var(--primary-dark);">稳步推进<br>持续交付</div>
-      <div class="tagline" style="margin-bottom:20px;">集团化切换 · AI 数字员工部署 · 数据决策支持 · 稳定性保障</div>
-      <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+      <div class="big-title" style="font-size:32px;font-weight:800;margin-bottom:14px;color:var(--primary-dark);">稳步推进<br>持续交付</div>
+      <div class="tagline" style="margin-bottom:18px;">集团化切换 · AI 数字员工部署 · 数据决策支持 · 稳定性保障</div>
+      <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;">
         <span class="badge">Q3 系统切换</span>
         <span class="badge">Q3 AI 试点</span>
         <span class="badge">Q4 旧系统下线</span>
@@ -704,7 +764,7 @@
     <span class="nav-section" id="navSection">封面</span>
     <div class="nav-dots" id="navDots"></div>
     <div class="page-indicator" id="pageIndicator">1 / 11</div>
-    <div style="display:flex;gap:8px;">
+    <div style="display:flex;gap:6px;">
       <button class="nav-btn" id="prevBtn" onclick="prevSlide()" disabled>‹</button>
       <button class="nav-btn" id="nextBtn" onclick="nextSlide()">›</button>
     </div>
@@ -717,54 +777,152 @@
   const total=slides.length; let cur=0;
   const dotsC=document.getElementById('navDots');
   for(let i=0;i<total;i++){const d=document.createElement('div');d.className='nav-dot'+(i===0?' active':'');d.onclick=()=>go(i);dotsC.appendChild(d);}
-
-  // Section names for nav
   const sectionNames=['封面','概览','四司差异','进展收益','复盘反思','AI 落地','治理体系','测试赋能','Q3 规划','Q4 规划','甘特总览','结语'];
-
-  function update(){
-    slides.forEach((s,i)=>{s.classList.remove('active','exit');if(i===cur)s.classList.add('active');else if(i<cur)s.classList.add('exit');});
-    document.querySelectorAll('.nav-dot').forEach((d,i)=>d.classList.toggle('active',i===cur));
-    document.getElementById('pageIndicator').textContent=`${cur+1} / ${total}`;
-    document.getElementById('prevBtn').disabled=cur===0;
-    document.getElementById('nextBtn').disabled=cur===total-1;
-    document.getElementById('navSection').textContent=sectionNames[cur]||'';
-    // Animate stats
-    animateStats();
-  }
-
-  function animateStats(){
-    const stats=document.querySelectorAll('.slide.active .animated-stat');
-    stats.forEach(el=>{
-      if(el.dataset.animated) return;
-      el.dataset.animated='true';
-      const target=parseInt(el.dataset.target);
-      const suffix=el.dataset.suffix||'';
-      const duration=800;
-      const start=performance.now();
-      function tick(now){
-        const elapsed=now-start;
-        const progress=Math.min(elapsed/duration,1);
-        const eased=1-Math.pow(1-progress,3);
-        const current=Math.round(eased*target);
-        el.innerHTML=current+suffix+'<span> '+el.querySelector('span')?.textContent?.trim()+'</span>';
-        if(progress<1) requestAnimationFrame(tick);
-        else el.innerHTML=target+suffix+'<span> '+el.querySelector('span')?.textContent?.trim()+'</span>';
-      }
-      requestAnimationFrame(tick);
-    });
-  }
-
+  function update(){slides.forEach((s,i)=>{s.classList.remove('active','exit');if(i===cur)s.classList.add('active');else if(i<cur)s.classList.add('exit');});document.querySelectorAll('.nav-dot').forEach((d,i)=>d.classList.toggle('active',i===cur));document.getElementById('pageIndicator').textContent=`${cur+1} / ${total}`;document.getElementById('prevBtn').disabled=cur===0;document.getElementById('nextBtn').disabled=cur===total-1;document.getElementById('navSection').textContent=sectionNames[cur]||'';animateStats();}
+  function animateStats(){const stats=document.querySelectorAll('.slide.active .animated-stat');stats.forEach(el=>{if(el.dataset.animated)return;el.dataset.animated='true';const target=parseInt(el.dataset.target);const suffix=el.dataset.suffix||'';const duration=800;const start=performance.now();function tick(now){const elapsed=now-start;const progress=Math.min(elapsed/duration,1);const eased=1-Math.pow(1-progress,3);const current=Math.round(eased*target);el.innerHTML=current+suffix+'<span> '+(el.querySelector('span')?.textContent?.trim()||'')+'</span>';if(progress<1)requestAnimationFrame(tick);}});}
   function go(i){if(i<0||i>=total||i===cur)return;cur=i;update();}
   function nextSlide(){go(cur+1);}
   function prevSlide(){go(cur-1);}
-
-  document.addEventListener('keydown',e=>{
-    if(e.key==='ArrowRight'||e.key===' '||e.key==='ArrowDown'){e.preventDefault();nextSlide();}
-    if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();prevSlide();}
-  });
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&isEditing)exitEditMode();if(e.key==='ArrowRight'||e.key===' '||e.key==='ArrowDown'){e.preventDefault();nextSlide();}if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();prevSlide();}});
   let wt=false;document.addEventListener('wheel',e=>{if(wt)return;wt=true;setTimeout(()=>wt=false,500);e.deltaY>30?nextSlide():e.deltaY<-30&&prevSlide();},{passive:true});
   let tx=0;document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
   document.addEventListener('touchend',e=>{const d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>50)d>0?nextSlide():prevSlide();},{passive:true});
+
+  // ====== EDIT MODE ======
+  let isEditing = false;
+  let editChanges = {};
+
+  function toggleEdit() {
+    isEditing = !isEditing;
+    const btn = document.getElementById('editToggle');
+    const saveBtn = document.getElementById('saveBtn');
+    const exportBtn = document.getElementById('exportBtn');
+    const hint = document.getElementById('editHint');
+    const toolbar = document.getElementById('editToolbar');
+
+    if (isEditing) {
+      btn.classList.add('active');
+      btn.textContent = '🔒 退出';
+      saveBtn.style.display = '';
+      exportBtn.style.display = '';
+      hint.classList.add('visible');
+      toolbar.classList.add('visible');
+      document.body.style.userSelect = 'text';
+      enableEditCells();
+    } else {
+      exitEditMode();
+    }
+  }
+
+  function enableEditCells() {
+    document.querySelectorAll('.cell-content[data-editable="true"]').forEach(cell => {
+      cell.style.cursor = 'pointer';
+      cell.title = '双击编辑';
+      cell.ondblclick = function() { startCellEdit(this); };
+    });
+  }
+
+  function startCellEdit(cell) {
+    if (!isEditing) return;
+    const original = cell.textContent;
+    const input = document.createElement('textarea');
+    input.className = 'edit-cell-input';
+    input.value = original === '待补充' ? '' : original;
+    input.rows = 2;
+    cell.textContent = '';
+    cell.appendChild(input);
+    input.focus();
+    input.select();
+
+    function finishEdit() {
+      const newVal = input.value.trim() || '待补充';
+      cell.textContent = newVal;
+      cell.ondblclick = function() { startCellEdit(this); };
+      // Track change
+      const row = cell.closest('tr');
+      const col = cell.cellIndex;
+      const key = `cell_${row.rowIndex}_${col}`;
+      editChanges[key] = newVal;
+    }
+
+    input.addEventListener('blur', finishEdit);
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); input.blur(); }
+      if (e.key === 'Escape') { input.value = original; input.blur(); }
+    });
+  }
+
+  function exitEditMode() {
+    isEditing = false;
+    document.getElementById('editToggle').classList.remove('active');
+    document.getElementById('editToggle').textContent = '✏️ 编辑';
+    document.getElementById('saveBtn').style.display = 'none';
+    document.getElementById('exportBtn').style.display = 'none';
+    document.getElementById('editHint').classList.remove('visible');
+    document.getElementById('editToolbar').classList.remove('visible');
+    document.body.style.userSelect = 'none';
+    // Remove edit handlers
+    document.querySelectorAll('.cell-content').forEach(cell => {
+      cell.style.cursor = '';
+      cell.title = '';
+      cell.ondblclick = null;
+    });
+  }
+
+  function saveEdit() {
+    // Save to localStorage
+    const cells = {};
+    document.querySelectorAll('.cell-content[data-editable="true"]').forEach((cell, i) => {
+      cells[`cell_${i}`] = cell.textContent;
+    });
+    localStorage.setItem('slide_edit_data', JSON.stringify(cells));
+    // Visual feedback
+    const btn = document.getElementById('saveBtn');
+    btn.textContent = '✅ 已保存';
+    setTimeout(() => { btn.textContent = '💾 保存'; }, 1500);
+  }
+
+  function exportHTML() {
+    // Clone the current page, remove edit toolbar, clean up
+    const clone = document.documentElement.cloneNode(true);
+    // Remove edit elements
+    const toolbar = clone.querySelector('#editToolbar');
+    const hint = clone.querySelector('#editHint');
+    if (toolbar) toolbar.remove();
+    if (hint) hint.remove();
+    // Remove edit indicators
+    clone.querySelectorAll('.edit-indicator').forEach(el => el.remove());
+    // Remove data-editable attributes and edit handlers
+    clone.querySelectorAll('.cell-content').forEach(cell => {
+      cell.removeAttribute('data-editable');
+      cell.removeAttribute('style');
+      cell.removeAttribute('title');
+    });
+    const html = '<!DOCTYPE html>\n' + clone.outerHTML;
+    const blob = new Blob([html], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = '26H1_report_edited.html';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  // Load saved data on page load
+  (function loadSavedData() {
+    const saved = localStorage.getItem('slide_edit_data');
+    if (!saved) return;
+    try {
+      const cells = JSON.parse(saved);
+      const editableCells = document.querySelectorAll('.cell-content[data-editable="true"]');
+      Object.keys(cells).forEach(key => {
+        const idx = parseInt(key.replace('cell_', ''));
+        if (editableCells[idx] && cells[key] !== '待补充') {
+          editableCells[idx].textContent = cells[key];
+        }
+      });
+    } catch(e) {}
+  })();
 </script>
 </body>
 </html>
